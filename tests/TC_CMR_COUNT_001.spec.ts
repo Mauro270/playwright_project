@@ -10,6 +10,6 @@ test( 'Validar texto (Abre tu cuenta c)', async ({ page }) => {
   await page.getByRole('link', { name: 'Cuentas', exact: true }).click();
   await page.getByRole('heading', { name: 'Abre tu Cuenta Corriente en 5' })
   await expect(page.getByRole('heading', { name: 'Abre tu Cuenta Corriente en 5' })).toContainText('Abre tu Cuenta Corriente en 5')
-  await page.screenshot({ path: 'screenshot.png', fullPage: true });
+  await page.screenshot({ path: './test-results/screenshot.png', fullPage: true });
   await page.close();
 });
