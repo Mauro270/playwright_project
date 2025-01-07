@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 const { SolicitudCMRPage } = require('../pages/SolicitudCMRPage');
 
+
 test('TC_001', async ({ page }) => {
 
   //Validar el registro de solicitud de tarjeta CMR: Validar el completo registro del formulario y que el botón para solicitud
@@ -35,8 +36,7 @@ test('TC_001', async ({ page }) => {
 
   test('TC_002', async ({ page }) => {
 
-    //Validar el registro de solicitud de tarjeta CMR: Validar el completo registro del formulario y que el botón para solicitud
-    //se encuentre totalmente habilitado.
+    // validar que el botón para solicitar tarjeta CMR se encuentre totalmente deshabilitado (siempre y cuando no se termine de completar el formulario.)
     
       const solicitudCMRPage = new SolicitudCMRPage(page);
   
@@ -50,3 +50,7 @@ test('TC_001', async ({ page }) => {
         const isDisabled = await solicitudCMRPage.isSendFormButtonDisabled();
         expect(isDisabled).toBe(true); // Ajusta según el comportamiento esperado
     });
+
+
+
+    
