@@ -15,6 +15,7 @@ class SolicitudCMRPage {
         this.tercerosCheckbox = page.locator('#acceptThirdParties');
         this.terminosCheckbox = page.locator('#acceptTermsCheck');
         this.verCMRButton = page.getByRole('button', { name: 'VER CMR DISPONIBLE' });
+        this.landingSendFormButton = '#landingSendFormButton'; // Selector del botón
     }
 
     async navigate() {
@@ -23,7 +24,7 @@ class SolicitudCMRPage {
 
     async verifyHeadingVisible(timeout = 30000) {
         await expect(this.heading).toBeVisible({ timeout });
-        await page.screenshot({ path: './test-results/screenshot_validacion.png', fullPage: true });
+        //await page.screenshot({ path: './pages/test-results/screenshot_validacion.png', fullPage: true });
     }
 
     async fillForm({ rut, phone, cell, email }) {
@@ -45,6 +46,17 @@ class SolicitudCMRPage {
 
     async verifyButtonEnabled() {
         await expect(this.verCMRButton).toBeEnabled();
+    }
+
+    async scrollToSendFormButton() {
+        const button = await this.page.waitForSelector(this.landingSendFormButton);
+        await button.scrollIntoViewIfNeeded();
+    }
+
+    async isSendFormButtonDisabled() {
+        const button = await this.page.waitForSelector(this.landingSendFormButton);
+        const isDisabled = await button.isDisabled();
+        return isDisabled;
     }
 }
 
