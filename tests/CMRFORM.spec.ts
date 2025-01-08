@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 const { SolicitudCMRPage } = require('../pages/SolicitudCMRPage');
+const datos = require('../datos/datos.json');
 
 
 test('TC_001', async ({ page }) => {
@@ -17,7 +18,7 @@ test('TC_001', async ({ page }) => {
 
     // Llenar el formulario
     await solicitudCMRPage.fillForm({
-        rut: '16.970.266-7',
+        rut: datos.rut,
         phone: '530973821',
         cell: '967284043',
         email: 'mauro.270@gmail.com',
