@@ -25,3 +25,12 @@ test('TC_003 add product in a cart', async ({ page }) => {
     await searchFunction.addCartItem('1');
     
 });
+
+
+test('TC_004 validate quantity of products in cart', async ({ page }) => {
+    const searchFunction = new SearchFunctionality(page);
+    await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
+    await searchFunction.searchProduct('Brocolli');
+    await searchFunction.addCartItemForTwo('2');
+    
+});

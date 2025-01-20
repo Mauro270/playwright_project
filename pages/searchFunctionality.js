@@ -30,6 +30,13 @@ class SearchFunctionality {
         await this.buttonProceedCheckout.click();
         await expect(this.amountValidate).toHaveText(expectedText, { timeout: 10000 });
     }
+
+    async addCartItemForTwo(expectedText) {
+        await this.buttonAddCart.dblclick({ force: true });
+        await this.buttonAccesPayment.click();
+        await this.buttonProceedCheckout.click();
+        await expect(this.amountValidate).toHaveText(expectedText, { timeout: 10000 });
+    }
 }
 
 module.exports = { SearchFunctionality };
